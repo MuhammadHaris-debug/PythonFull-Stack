@@ -16,4 +16,24 @@ def create_students(request):
 
 def display_students(request):
     student=Student.objects.all()
-    return render(request, 'display.html',{'i':student})
+    return render(request, 'display.html',{'students':student})
+
+
+def update_student(request,id):
+    student=Student.objects.get(id=id)
+    if request.method=='POST':
+        student.name=request.POST['name']
+        student.age=request.POST['age']
+        student.course=request.POST['course']
+
+        student.save()
+
+        return redirect('display_students')
+
+    return render(request,'update.html',{'students':student})
+
+def delete_student(request,id):
+    student=Student.objects.get(id=id)
+    student.delete()
+    return redirect('display_students')
+

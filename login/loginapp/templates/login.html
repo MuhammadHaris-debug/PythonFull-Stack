@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <form method="post">
+
+        {% csrf_token %}
+
+
+    <input type="text" name="username" placeholder="Enter your name"><br>
+    <input type="text" name="password" placeholder="Enter your password"><br>
+    <button type="submit">Login</button>
+    </form>
+    <br><br>
+    <span> if you dont have an acccount<a href="../">Register</a></span><br>
+</body>
+</html>

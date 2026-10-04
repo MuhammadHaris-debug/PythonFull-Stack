@@ -7,4 +7,4 @@ class Student(models.Model):
     course=models.CharField(max_length=100)
 
     def __str__(self):
-        return self.namepu
+        return self.name

@@ -1,23 +1,53 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Student List</title>
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-    <form action="" method="post">
 
+<body>
+
+    <h1>Student List</h1>
+
+    <form method="POST">
         {% csrf_token %}
-        
-        
-        <input type="text" name="name"  placeholder="Enter your name" required>
-        <input type="number" name="age"  placeholder="Enter your age" required>
-        <input type="text" name="course"  placeholder="course" required>
-        <button type="submit"> Add student</button>
+
+        <input type="text" name="name" placeholder="Enter your name" required>
+
+        <input type="number" name="age" placeholder="Enter your age" required>
+
+        <input type="text" name="course" placeholder="Course" required>
+
+        <button type="submit">Add Student</button>
     </form>
-    
+
+
+    <h2>Student List</h2>
+
+    {% for i in students %}
+
+        <div class="student">
+
+            <p>Name: {{ i.name }}</p>
+
+            <p>Age: {{ i.age }}</p>
+
+            <p>Course: {{ i.course }}</p>
+
+            <a href="{% url 'update_student' i.id %}">Update</a>
+
+            <a href="{% url 'delete_student' i.id %}">Delete</a>
+
+        </div>
+
+    {% endfor %}
+
 </body>
 </html>
